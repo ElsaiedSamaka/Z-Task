@@ -1,0 +1,23 @@
+.icon-green {
+        color: green;
+      }
+.icon-red {
+        color: red;
+}
+.icon-yellow {
+        color: yellow;
+}
+.icon-white{
+        color: white;
+}
+.icon-orange{
+        color: orange;
+}
+.icon-large {
+        font-size: 25px;
+}
+i{
+    font-size: 25px;
+    cursor: pointer;
+
+}
