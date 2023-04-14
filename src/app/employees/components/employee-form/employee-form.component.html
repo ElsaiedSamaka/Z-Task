@@ -1,3 +1,34 @@
-<p>
-  employee-form works!
-</p>
+<a class="btn btn-success m-2" role="button" (click)="onClick()">Add New Employee</a>
+<app-model (dismiss)="onClick()" *ngIf="showModel">
+
+  <div modal-header>
+    <h5 class="modal-title">Add Employee</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseHandled()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div modal-body>
+    <form [formGroup]="empForm" (ngSubmit)="onSubmit()" class="needs-validation">
+      <app-input [control]="nameControl" type="text" label="Name" placeholder="lorem.."></app-input>
+      <app-input [control]="mailControl" type="email" label="Email" placeholder="lorem@ipsum.com"></app-input>
+      <div class="form-group">
+        <label for="address-text" class="col-form-label">Address</label>
+        <textarea formControlName="empAddress" class="form-control" id="address-text"></textarea>
+      </div>
+      <div *ngIf="showErrors()" class="invalid-feedback" style="display: block;">
+        <div *ngIf="empForm.controls['empAddress'].errors['required']">
+          هذا الحقل مطلوب
+        </div>
+      </div>
+      <app-input [control]="phoneControl" type="tel" label="Phone"></app-input>
+      <div modal-footer>
+        <button type="button" class="btn btn-white" data-dismiss="modal" (click)="onCloseHandled()">Cancel</button>
+        <button type="submit" [disabled]="empForm.invalid" class="btn btn-success m-2">Add</button>
+      </div>
+    </form>
+  </div>
+  <!-- <div modal-footer>
+                                                  <button type="button" class="btn btn-white" data-dismiss="modal" (click)="onCloseHandled()">Cancel</button>
+                                                  <button type="submit" [disabled]="empForm.invalid" class="btn btn-success m-2">Add</button>
+                                                </div> -->
+  </app-model>

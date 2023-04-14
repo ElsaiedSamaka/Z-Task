@@ -1,0 +1,28 @@
+<div class="form-group  has-validation" [ngClass]="control.invalid && showErrors() ? 'error' : ''">
+  <label class="col-form-label">{{label}}</label>
+  <input [formControl]="control" [placeholder]="placeholder" [type]="type" class="form-control" />
+
+  <div *ngIf="showErrors()" class="invalid-feedback" style="display: block;">
+    <div *ngIf="control.errors['required']">
+      هذا الحقل مطلوب
+    </div>
+    <div *ngIf="control.errors['minlength']">
+      الحد الأدنى للحروف هو {{control.errors['minlength'].requiredLength}}
+    </div>
+    <div *ngIf="control.errors['maxlength']">
+      الحد الأقصى للحروف هو {{control.errors['maxlength'].requiredLength}}
+    </div>
+    <div *ngIf="control.errors['pattern']">
+      الرقم الذي تم ادخاله غير صالح
+    </div>
+    <div *ngIf="control.errors['notEmailUnique']">
+      هذا البريد الالكتروني مستخدم من قبل
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showErrors()" class="invalid-feedback" style="display: block;">
+  <div *ngIf="control.errors['required']">
+    هذا الحقل مطلوب
+  </div>
+</div>
