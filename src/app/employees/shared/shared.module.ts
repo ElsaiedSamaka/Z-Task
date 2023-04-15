@@ -18,7 +18,7 @@ import { LoadingSpinnerComponent } from './views/loading-spinner/loading-spinner
     InputComponent,
     FormComponent,
     SortComponent,
-    SortDirective,
+    // SortDirective,
   ],
   exports: [
     LoadingSpinnerComponent,

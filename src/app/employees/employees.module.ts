@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
     EmployeeFormComponent,
     EmployeeListComponent,
     EmployeeFormDeleteComponent,
+    SortDirective
   ],
 })
 export class EmployeesModule {}

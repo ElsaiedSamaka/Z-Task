@@ -17,7 +17,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   empId;
   loading$;
   emplyees!: Employee[];
-  emplyeesToDisplay: any[] = [];
+  emplyeesToDisplay: Employee[] = [];
   currentPage = 1;
   totalPages = 1;
   perPage = 10;
