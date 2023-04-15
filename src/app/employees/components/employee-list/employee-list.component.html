@@ -24,19 +24,19 @@
       </th>
       <th class="th-sm">
         <span> Name</span>
-        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empName"></app-sort>
+        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empName" (sortTypeChange)="false"></app-sort>
       </th>
       <th class="th-sm">
         <span> Email</span>
-        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empEmail"></app-sort>
+        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empEmail" (sortTypeChange)="true"></app-sort>
       </th>
       <th class="th-sm">
         <span> Address</span>
-        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empAddress"></app-sort>
+        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empAddress" (sortTypeChange)="true"></app-sort>
       </th>
       <th class="th-sm">
         <span> Phone</span>
-        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empPhone"></app-sort>
+        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empPhone" (sortTypeChange)="false"></app-sort>
       </th>
       <th class="th-sm">Actions
       </th>
