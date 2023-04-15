@@ -72,7 +72,8 @@
     </button>
   </div>
   <div modal-body>
-    <app-form [empId]="empId" [editMode]="editMode" (dismiss)="onCloseHandled()"></app-form>
+    <app-form [empId]="empId" [editMode]="editMode" (dismiss)="onCloseHandled()"
+      (addNewEmp)="addEmployee($event)"></app-form>
   </div>
 </app-model>
 <!-- Edit Modal -->

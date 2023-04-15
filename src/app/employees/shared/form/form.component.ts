@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
   @Input() empId!: any;
   @Input() editMode: boolean = false;
   @Output() dismiss = new EventEmitter<void>();
+  @Output() addNewEmp = new EventEmitter<Employee>();
 
   emplyeeDetails: Employee;
   empForm!: FormGroup;
@@ -103,7 +104,7 @@ export class FormComponent implements OnInit {
     // } else {
     this.empSer.addEmployee(employee).subscribe({
       next: (response) => {
-        console.log(response);
+        this.addNewEmp.emit(employee);
       },
       error: (err) => {
         console.log(err);

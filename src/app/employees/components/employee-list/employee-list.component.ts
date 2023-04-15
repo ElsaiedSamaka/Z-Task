@@ -29,7 +29,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     console.log(this.empId);
   }
   ngOnInit(): void {
-    this.empSer.employes$.subscribe((res) => {
+    this.empSer.getEmployees$.subscribe((res) => {
       this.emplyees = res;
     });
   }
@@ -79,6 +79,21 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.empSer.deleteEmployee(id).subscribe((res) => {
       this.emplyees = this.emplyees.filter((emp) => emp.empId !== id);
       this.getEmplyees();
+    });
+  }
+  addEmployee(emp: Employee) {
+    this.empSer.getEmployees().subscribe({
+      next: (res) => {
+        this.emplyees = res;
+        this.emplyees.push(emp);
+        this.getEmplyees();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
     });
   }
 

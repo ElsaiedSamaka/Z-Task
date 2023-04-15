@@ -7,6 +7,7 @@ import { environment } from './../../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class EmpolyeesService {
   employes$ = new BehaviorSubject<any>([]);
+  getEmployees$ = this.employes$.asObservable();
 
   Employee_API = environment.apiUrl + 'Employees';
   constructor(private http: HttpClient) {}
