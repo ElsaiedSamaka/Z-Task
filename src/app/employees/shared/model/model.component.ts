@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnInit,
   Output,
 } from '@angular/core';
@@ -12,7 +13,7 @@ import {
   styleUrls: ['./model.component.css'],
 })
 export class ModelComponent implements OnInit {
-  display = 'block';
+  @Input() display = 'none';
   @Output() dismiss = new EventEmitter<void>();
   constructor(private el: ElementRef) {}
 

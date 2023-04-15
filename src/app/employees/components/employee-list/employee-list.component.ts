@@ -1,5 +1,6 @@
 import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { Employee } from '../../models/employee.model';
 import { EmpolyeesService } from '../../services/employees.service';
 import { uiService } from '../../shared/services/ui.service';
 
@@ -10,10 +11,12 @@ import { uiService } from '../../shared/services/ui.service';
 })
 export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   sub$ = new Subject();
-  display: boolean = false;
-  empId = '';
+  showModel = false;
+  display = 'none';
+  editMode = false;
+  empId;
   loading$;
-  emplyees!: any[];
+  emplyees!: Employee[];
   emplyeesToDisplay: any[] = [];
   currentPage = 1;
   totalPages = 1;
@@ -25,12 +28,17 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   ngDoCheck(): void {
     console.log(this.empId);
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.empSer.employes$.subscribe((res) => {
+      this.emplyees = res;
+    });
+  }
 
   public onGoTo(page: number): void {
     this.currentPage = page;
     this.emplyeesToDisplay = this.paginate(this.currentPage, this.perPage);
   }
+
   public onNext(page: number): void {
     if (this.currentPage === this.totalPages) return;
     if (this.currentPage < this.totalPages) {
@@ -40,6 +48,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
       this.emplyeesToDisplay = this.paginate(this.currentPage, this.perPage);
     }
   }
+
   public onPrevious(page: number): void {
     if (this.currentPage === 1) return;
     if (this.currentPage > 1) {
@@ -49,9 +58,11 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
       this.emplyeesToDisplay = this.paginate(this.currentPage, this.perPage);
     }
   }
-  public paginate(current: number, perPage: number): string[] {
+
+  public paginate(current: number, perPage: number): any[] {
     return [...this.emplyees.slice((current - 1) * perPage).slice(0, perPage)];
   }
+
   getEmplyees() {
     this.empSer
       .getEmployees()
@@ -62,6 +73,26 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
         this.emplyeesToDisplay = this.paginate(this.currentPage, this.perPage);
         this.uiSer.loading$.next(false);
       });
+  }
+
+  deleteEmployee(id: string) {
+    this.empSer.deleteEmployee(id).subscribe((res) => {
+      this.emplyees = this.emplyees.filter((emp) => emp.empId !== id);
+      this.getEmplyees();
+    });
+  }
+
+  openEditModal(id: string) {
+    this.showModel = !this.showModel;
+    this.display = 'block';
+    this.empId = id;
+    this.editMode = true;
+  }
+
+  onCloseHandled() {
+    this.showModel = false;
+    this.display = 'none';
+    this.editMode = false;
   }
   ngOnDestroy(): void {
     this.sub$.next('');

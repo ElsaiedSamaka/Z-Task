@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Employee } from '../../models/employee.model';
 import { EmpolyeesService } from '../../services/employees.service';
+import { uiService } from '../../shared/services/ui.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -12,7 +12,11 @@ export class EmployeeFormComponent implements OnInit {
   showModel = false;
   display = 'none';
   empForm!: FormGroup;
-  constructor(private empSer: EmpolyeesService) {}
+  loading$;
+
+  constructor(private empSer: EmpolyeesService, private uiSer: uiService) {
+    this.loading$ = this.uiSer.loading$;
+  }
 
   ngOnInit() {
     this.empForm = new FormGroup({
@@ -21,6 +25,7 @@ export class EmployeeFormComponent implements OnInit {
       empAddress: new FormControl('', [Validators.required]),
       empPhone: new FormControl('', [
         Validators.required,
+        Validators.maxLength(11),
         Validators.pattern('^01[0-2,5]{1}[0-9]{8}$'),
       ]),
     });
@@ -48,29 +53,5 @@ export class EmployeeFormComponent implements OnInit {
   onCloseHandled() {
     this.showModel = !this.showModel;
     this.display = 'none';
-  }
-  onSubmit() {
-    if (this.empForm.invalid) return;
-
-    const employee: Employee = {
-      empName: this.empForm.controls['empName'].value,
-      empEmail: this.empForm.controls['empEmail'].value,
-      empPhone: this.empForm.controls['empPhone'].value,
-      empAddress: this.empForm.controls['empAddress'].value,
-    };
-    this.empSer.addEmployee(employee).subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log('complete');
-      },
-    });
-    console.log(this.empForm.value);
-    this.empForm.reset();
-    this.onCloseHandled();
   }
 }

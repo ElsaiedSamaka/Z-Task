@@ -1,0 +1,22 @@
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()" class="needs-validation">
+  <app-input [control]="nameControl" type="text" label="Name" placeholder="lorem.."></app-input>
+  <!-- [value]="emplyeeDetails?.empName" -->
+  <app-input [control]="mailControl" type="email" label="Email" placeholder="lorem@ipsum.com"></app-input>
+  <!-- [value]="emplyeeDetails?.empEmail" -->
+  <div class="form-group">
+    <label for="address-text" class="col-form-label">Address</label>
+    <textarea formControlName="empAddress" class="form-control" id="address-text"></textarea>
+    <!-- [value]="emplyeeDetails?.empAddress" -->
+  </div>
+  <div *ngIf="showErrors()" class="invalid-feedback" style="display: block;">
+    <div *ngIf="empForm.controls['empAddress'].errors['required']">
+      هذا الحقل مطلوب
+    </div>
+  </div>
+  <app-input [control]="phoneControl" type="tel" label="Phone"></app-input>
+  <!-- [value]="emplyeeDetails?.empPhone" -->
+  <div modal-footer>
+    <button type="button" class="btn btn-white" data-dismiss="modal" (click)="onDismissClick()">Cancel</button>
+    <button type="submit" class="btn btn-success m-2" [disabled]="empForm.invalid">Save</button>
+  </div>
+</form>
