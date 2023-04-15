@@ -26,7 +26,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.loading$ = this.uiSer.loading$;
   }
   ngDoCheck(): void {
-    console.log(this.empId);
+    // console.log(this.empId);
   }
   ngOnInit(): void {
     this.empSer.getEmployees$.subscribe((res) => {
@@ -44,7 +44,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     if (this.currentPage < this.totalPages) {
       // this.currentPage = page + 1;
       this.currentPage++;
-      console.log(this.currentPage);
+      // console.log(this.currentPage);
       this.emplyeesToDisplay = this.paginate(this.currentPage, this.perPage);
     }
   }
@@ -54,7 +54,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     if (this.currentPage > 1) {
       // this.currentPage = page - 1;
       this.currentPage--;
-      console.log(this.currentPage);
+      // console.log(this.currentPage);
       this.emplyeesToDisplay = this.paginate(this.currentPage, this.perPage);
     }
   }

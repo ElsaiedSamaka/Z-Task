@@ -5,7 +5,8 @@
   <!-- [value]="emplyeeDetails?.empEmail" -->
   <div class="form-group">
     <label for="address-text" class="col-form-label">Address</label>
-    <textarea formControlName="empAddress" class="form-control" id="address-text"></textarea>
+    <textarea formControlName="empAddress" class="form-control" id="address-text"
+      [value]="emplyeeDetails?.empAddress"></textarea>
     <!-- [value]="emplyeeDetails?.empAddress" -->
   </div>
   <div *ngIf="showErrors()" class="invalid-feedback" style="display: block;">

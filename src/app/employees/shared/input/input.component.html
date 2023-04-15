@@ -1,6 +1,6 @@
 <div class="form-group  has-validation" [ngClass]="control.invalid && showErrors() ? 'error' : ''">
   <label class="col-form-label">{{label}}</label>
-  <input [formControl]="control" [placeholder]="placeholder" [type]="type" [value]="value" class="form-control" />
+  <input [formControl]="control" [placeholder]="placeholder" [type]="type" class="form-control" />
 
   <div *ngIf="showErrors()" class="invalid-feedback" style="display: block;">
     <div *ngIf="control.errors['required']">
@@ -15,8 +15,8 @@
     <div *ngIf="control.errors['pattern']">
       الرقم الذي تم ادخاله غير صالح
     </div>
-    <div *ngIf="control.errors['notEmailUnique']">
-      هذا البريد الالكتروني مستخدم من قبل
+    <div *ngIf="control.errors['email']">
+      البريد الالكتروني الذي تم ادخاله غير صالح
     </div>
   </div>
 </div>
