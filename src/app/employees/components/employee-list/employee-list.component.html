@@ -22,13 +22,21 @@
           <label class="form-check-label" for="materialUnchecked"></label>
         </div>
       </th>
-      <th class="th-sm" [appSort]="emplyeesToDisplay" data-order="desc" data-name="empName">Name
+      <th class="th-sm">
+        <span> Name</span>
+        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empName"></app-sort>
       </th>
-      <th class="th-sm" [appSort]="emplyeesToDisplay" data-order="desc" data-name="empEmail">Email
+      <th class="th-sm">
+        <span> Email</span>
+        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empEmail"></app-sort>
       </th>
-      <th class="th-sm" [appSort]="emplyeesToDisplay" data-order="desc" data-name="empAddress">Address
+      <th class="th-sm">
+        <span> Address</span>
+        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empAddress"></app-sort>
       </th>
-      <th class="th-sm" [appSort]="emplyeesToDisplay" data-order="desc" data-name="empPhone">Phone
+      <th class="th-sm">
+        <span> Phone</span>
+        <app-sort [appSort]="emplyeesToDisplay" data-order="desc" data-name="empPhone"></app-sort>
       </th>
       <th class="th-sm">Actions
       </th>
