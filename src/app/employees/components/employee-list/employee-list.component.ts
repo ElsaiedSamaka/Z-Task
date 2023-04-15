@@ -114,3 +114,16 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.sub$.complete();
   }
 }
+// to show a confirmation model on delete employee button click
+// we will have to have a property showConfirmationModal: boolean = false;
+// and displayConfirmationModal = 'none'
+// and on delete button click we will set showConfirmationModal = true;
+// and displayConfirmationModal = 'block';
+// and on cancel button click we will set showConfirmationModal = false;
+// and displayConfirmationModal = 'none';
+// and on confirm button click we will set showConfirmationModal = false;
+// and displayConfirmationModal = 'none';
+// and call deleteEmployee(id: string) method
+// and on deleteEmployee(id: string) method we will call getEmployees() method
+// and on getEmployees() method we will set showConfirmationModal = false;
+// and displayConfirmationModal = 'none';
