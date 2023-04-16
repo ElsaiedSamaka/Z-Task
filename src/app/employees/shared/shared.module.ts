@@ -7,7 +7,6 @@ import { ModelComponent } from './model/model.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SortComponent } from './sort/sort.component';
 import { LoadingSpinnerComponent } from './views/loading-spinner/loading-spinner.component';
-import { SortDirective } from 'src/app/directive/sort.directive';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],

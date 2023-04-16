@@ -44,10 +44,10 @@
 
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="emplyees.length != 0; else notFound ">
     <tr *ngFor="let employee of emplyeesToDisplay">
       <td>
-        <div class="form-check">
+        <div class="form-check ">
           <input type="checkbox" class="form-check-input" id="materialUnchecked" [checked]="isEmplyessChecked"
             (change)="onEmpChange(employee.empId)">
           <label class="form-check-label" for="materialUnchecked"></label>
@@ -63,7 +63,23 @@
       </td>
     </tr>
   </tbody>
-
+  <ng-template #notFound>
+    <tbody>
+      <tr>
+        <td>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="materialUnchecked" disabled>
+            <label class="form-check-label" for="materialUnchecked"></label>
+          </div>
+        </td>
+        <td colspan="4" style="text-align: center;">Not Employees Found</td>
+        <td>
+          <i class="bi bi-pencil-fill " disabled></i>
+          <i class="bi bi-trash-fill " disabled></i>
+        </td>
+      </tr>
+    </tbody>
+  </ng-template>
 </table>
 <!-- Data Grid Component -->
 
@@ -87,6 +103,7 @@
   </div>
 </app-model>
 <!-- Edit Modal -->
+
 <!-- Confirmation Model -->
 <app-model (dismiss)="onConfirmationCloseHandled()" [display]="displayConfirmationModel" *ngIf="showConfiramtionModel">
   <div class="d-flex flex-row" modal-header>
