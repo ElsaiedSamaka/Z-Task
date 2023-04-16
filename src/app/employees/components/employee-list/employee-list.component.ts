@@ -12,7 +12,9 @@ import { uiService } from '../../shared/services/ui.service';
 export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   sub$ = new Subject();
   showModel = false;
+  showConfiramtionModel = false;
   display = 'none';
+  displayConfirmationModel = 'none';
   editMode = false;
   isEmplyessChecked = false;
   isEmployeeChecked = false;
@@ -115,6 +117,26 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.editMode = false;
   }
 
+  openConfirmationModal(id: string) {
+    this.showConfiramtionModel = !this.showConfiramtionModel;
+    this.displayConfirmationModel = 'block';
+    this.empId = id;
+  }
+
+  onConfirmationCloseHandled() {
+    this.showConfiramtionModel = false;
+    this.displayConfirmationModel = 'none';
+  }
+
+  deleteCheckedEmployees() {
+    this.deleteEmployee(this.empId);
+    this.onConfirmationCloseHandled();
+  }
+  deleteALLCheckedEmployees(ids: string[]) {
+    this.emplyeesToDisplay.length = 0;
+    this.onConfirmationCloseHandled();
+  }
+
   onEmplyessCheck(emplyessIds: string[]) {
     this.isEmplyessChecked = !this.isEmplyessChecked;
     if (this.isEmplyessChecked === true) {
@@ -142,7 +164,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
       console.log(this.selectedItemsList);
     }
   }
-  
+
   onEmpChange(empId: string) {
     if (this.selectedItemsList.includes(empId)) {
       this.selectedItemsList = this.selectedItemsList.filter(

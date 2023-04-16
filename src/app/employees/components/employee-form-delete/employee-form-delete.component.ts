@@ -8,22 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class EmployeeFormDeleteComponent implements OnInit {
   showConfiramtionModel = false;
   displayConfirmationModel = 'none';
-  empId;
+  empIds;
 
   constructor() {}
 
   ngOnInit() {}
-  openConfirmationModal(id: string) {
+  openConfirmationModal(ids: any[]) {
     this.showConfiramtionModel = !this.showConfiramtionModel;
     this.displayConfirmationModel = 'block';
-    this.empId = id;
+    this.empIds = ids;
   }
   onConfirmationCloseHandled() {
     this.showConfiramtionModel = false;
     this.displayConfirmationModel = 'none';
   }
+
   // TODO: ADD API CALL TO DELETE EMPLOYEEs
-  deleteALLCheckedEmployees(ids: string) {
+  deleteALLCheckedEmployees() {
     this.onConfirmationCloseHandled();
     console.log('employees have been deleted');
   }

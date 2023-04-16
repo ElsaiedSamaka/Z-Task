@@ -1,4 +1,4 @@
-<a class="btn btn-danger m-2" role="button" (click)="openConfirmationModal('12')">Delete</a>
+<a class="btn btn-danger m-2" role="button" (click)="openConfirmationModal([])">Delete</a>
 <!-- Confirmation Model -->
 <app-model (dismiss)="onConfirmationCloseHandled()" [display]="displayConfirmationModel" *ngIf="showConfiramtionModel">
   <div class="d-flex flex-row" modal-header>
@@ -13,7 +13,7 @@
   </div>
   <div modal-footer>
     <button class="btn btn-light m-2" (click)="onConfirmationCloseHandled()">Cancel</button>
-    <button class="btn btn-danger m-2" (click)="deleteALLCheckedEmployees('test')">Delete</button>
+    <button class="btn btn-danger m-2" (click)="deleteALLCheckedEmployees()">Delete</button>
   </div>
 </app-model>
 <!-- Confirmation Model -->

@@ -59,7 +59,7 @@
       <td>{{employee.empPhone}}</td>
       <td>
         <i class="bi bi-pencil-fill icon-orange " (click)="openEditModal(employee.empId)"></i>
-        <i class="bi bi-trash-fill icon-red" (click)="deleteEmployee(employee.empId)"></i>
+        <i class="bi bi-trash-fill icon-red" (click)="openConfirmationModal(employee.empId)"></i>
       </td>
     </tr>
   </tbody>
@@ -87,3 +87,21 @@
   </div>
 </app-model>
 <!-- Edit Modal -->
+<!-- Confirmation Model -->
+<app-model (dismiss)="onConfirmationCloseHandled()" [display]="displayConfirmationModel" *ngIf="showConfiramtionModel">
+  <div class="d-flex flex-row" modal-header>
+    <h5 class="modal-title">Delete Employee</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onConfirmationCloseHandled()">
+      X
+    </button>
+  </div>
+  <div modal-body>
+    <h3>Are you sure you want to delete these Records</h3>
+    <p>This action cannot be undone</p>
+  </div>
+  <div modal-footer>
+    <button class="btn btn-light m-2" (click)="onConfirmationCloseHandled()">Cancel</button>
+    <button class="btn btn-danger m-2" (click)="deleteCheckedEmployees()">Delete</button>
+  </div>
+</app-model>
+<!-- Confirmation Model -->
