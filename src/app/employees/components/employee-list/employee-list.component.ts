@@ -22,6 +22,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   emplyessIds;
   selectedItemsList = [];
   loading$;
+  displayToast = 'none';
   emplyees!: Employee[];
   emplyeesToDisplay: Employee[] = [];
   currentPage = 1;
@@ -79,9 +80,17 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   deleteEmployee(id: string) {
-    this.empSer.deleteEmployee(id).subscribe((res) => {
-      this.emplyees = this.emplyees.filter((emp) => emp.empId !== id);
-      this.getEmplyees();
+    this.empSer.deleteEmployee(id).subscribe({
+      next: (res) => {
+        this.emplyees = this.emplyees.filter((emp) => emp.empId !== id);
+        this.getEmplyees();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        this.onToastOpenHandled();
+      },
     });
   }
   addEmployee(emp: Employee) {
@@ -119,6 +128,12 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.empId = id;
   }
 
+  onToastCloseHandled() {
+    this.displayToast = 'none';
+  }
+  onToastOpenHandled() {
+    this.displayToast = 'block';
+  }
   onConfirmationCloseHandled() {
     this.showConfiramtionModel = false;
     this.displayConfirmationModel = 'none';

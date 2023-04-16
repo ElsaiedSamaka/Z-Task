@@ -1,0 +1,14 @@
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+  <div class="toast" style="position: fixed; top: 0; right: 0; " [ngStyle]="{'display': display, 'margin': '30px'}">
+    <div class="toast-header bg-success text-white ">
+      <strong class="p-2 mr-2 ">{{toastTitle}}</strong>
+      <small class="p-2 mr-2">just now</small>
+      <button type="button" class="  close  ml-9 " data-dismiss="toast" aria-label="Close" (click)="onDismissClick()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      {{toastMessage}}
+    </div>
+  </div>
+</div>
