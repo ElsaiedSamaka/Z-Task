@@ -49,9 +49,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   public onNext(page: number): void {
     if (this.currentPage === this.totalPages) return;
     if (this.currentPage < this.totalPages) {
-      // this.currentPage = page + 1;
       this.currentPage++;
-      // console.log(this.currentPage);
       this.emplyeesToDisplay = this.paginate(this.currentPage, this.perPage);
     }
   }
@@ -59,9 +57,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   public onPrevious(page: number): void {
     if (this.currentPage === 1) return;
     if (this.currentPage > 1) {
-      // this.currentPage = page - 1;
       this.currentPage--;
-      // console.log(this.currentPage);
       this.emplyeesToDisplay = this.paginate(this.currentPage, this.perPage);
     }
   }

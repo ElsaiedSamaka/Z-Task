@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
   @Input() currentPage: number = 1;
-  @Input() totalPages: number = 10;
+  @Input() totalPages: number = 1;
   @Output() goTo: EventEmitter<number> = new EventEmitter<number>();
   @Output() next: EventEmitter<number> = new EventEmitter<number>();
   @Output() previous: EventEmitter<number> = new EventEmitter<number>();
@@ -21,6 +21,8 @@ export class PaginationComponent implements OnInit {
       this.currentPage,
       this.currentPage + 1,
       this.currentPage + 2,
+      this.currentPage + 3,
+      this.currentPage + 4,
     ].filter((pageNumber) => pageNumber >= 1 && pageNumber <= this.totalPages);
   }
 
@@ -31,7 +33,8 @@ export class PaginationComponent implements OnInit {
     this.goTo.emit(page);
   }
   public onNext(): void {
-    console.log('Next page');
+    console.log('Next page', this.currentPage);
+    console.log(this.pages);
     this.next.emit(this.currentPage);
   }
   public onPrevious(): void {

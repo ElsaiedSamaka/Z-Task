@@ -2,9 +2,10 @@
   <ul class="pagination justify-content-end">
     <li class="page-item" [ngClass]="{'disabled': (currentPage <= 1)}"><a class="page-link" (click)="onPrevious()"
         role="link">Previous</a></li>
-    <li class="page-item " [ngClass]="page === currentPage? 'active' : ''" *ngFor="let page of pages"><a
-        class="page-link" (click)="onGoTo(page)" (keyup.enter)="onGoTo(page)">{{page}}</a></li>
-    <li class="page-item" [ngClass]="{'disabled': (currentPage === totalPages)}"><a class="page-link" (click)="onNext()"
+    <li class="page-item " [ngClass]="page === currentPage? 'active' : ''" *ngFor="let page of pages;  index as i ">
+      <a class="page-link" (click)="onGoTo(page)" (keyup.enter)="onGoTo(page)">{{page}}</a>
+    </li>
+    <li class="page-item" [ngClass]="{'disabled': (currentPage === totalPages )}"><a class="page-link" (click)="onNext()"
         role="link">Next</a></li>
   </ul>
 </nav>

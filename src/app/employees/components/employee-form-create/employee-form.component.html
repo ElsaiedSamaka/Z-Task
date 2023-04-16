@@ -1,4 +1,7 @@
-<a class="btn btn-success m-2" role="button" (click)="onClick()">Add New Employee</a>
+<a class="btn btn-success m-2" role="button" (click)="onClick()">
+  <i class="bi bi-plus-circle-fill"></i>
+  Add New Employee
+</a>
 <app-model (dismiss)="onCloseHandled()" [display]="display" *ngIf="showModel">
 
   <div class="d-flex justify-content-between" modal-header>
