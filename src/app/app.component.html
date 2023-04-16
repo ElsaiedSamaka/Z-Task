@@ -1,9 +1,9 @@
 <!-- main content -->
 <div class="container">
   <div class="grid">
+    <router-outlet></router-outlet>
     <div class="col-12" *ngIf="loading$ | async">
       <app-loading-spinner></app-loading-spinner>
     </div>
-    <router-outlet></router-outlet>
     </div>
 </div>
