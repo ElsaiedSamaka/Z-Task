@@ -14,7 +14,11 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   showModel = false;
   display = 'none';
   editMode = false;
+  isEmplyessChecked = false;
+  isEmployeeChecked = false;
   empId;
+  emplyessIds;
+  selectedItemsList = [];
   loading$;
   emplyees!: Employee[];
   emplyeesToDisplay: Employee[] = [];
@@ -26,7 +30,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.loading$ = this.uiSer.loading$;
   }
   ngDoCheck(): void {
-    // console.log(this.empId);
+    this.emplyessIds = this.emplyeesToDisplay.map((emp) => emp.empId);
+    // console.log(this.selectedItemsList);
   }
   ngOnInit(): void {
     this.empSer.getEmployees$.subscribe((res) => {
@@ -109,6 +114,46 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.display = 'none';
     this.editMode = false;
   }
+
+  onEmplyessCheck(emplyessIds: string[]) {
+    this.isEmplyessChecked = !this.isEmplyessChecked;
+    if (this.isEmplyessChecked === true) {
+      let isSelected = this.selectedItemsList.includes(
+        emplyessIds[0] ||
+          emplyessIds[1] ||
+          emplyessIds[2] ||
+          emplyessIds[3] ||
+          emplyessIds[4] ||
+          emplyessIds[5] ||
+          emplyessIds[6] ||
+          emplyessIds[7] ||
+          emplyessIds[8] ||
+          emplyessIds[9]
+      );
+      if (isSelected) {
+        console.log('includes emp - will not addEmployee');
+      } else {
+        this.selectedItemsList = [...this.selectedItemsList, ...emplyessIds];
+        console.log('not includes emp - addEmployee');
+      }
+      console.log(this.selectedItemsList);
+    } else {
+      this.selectedItemsList.length = 0;
+      console.log(this.selectedItemsList);
+    }
+  }
+  
+  onEmpChange(empId: string) {
+    if (this.selectedItemsList.includes(empId)) {
+      this.selectedItemsList = this.selectedItemsList.filter(
+        (emp) => emp !== empId
+      );
+    } else {
+      this.selectedItemsList.push(empId);
+    }
+    console.log(this.selectedItemsList);
+  }
+
   ngOnDestroy(): void {
     this.sub$.next('');
     this.sub$.complete();

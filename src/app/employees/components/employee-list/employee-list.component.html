@@ -18,7 +18,8 @@
     <tr>
       <th>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="materialUnchecked">
+          <input type="checkbox" class="form-check-input" id="materialUnchecked" [checked]="isEmplyessChecked"
+            (change)="onEmplyessCheck(emplyessIds)">
           <label class="form-check-label" for="materialUnchecked"></label>
         </div>
       </th>
@@ -47,7 +48,8 @@
     <tr *ngFor="let employee of emplyeesToDisplay">
       <td>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="materialUnchecked">
+          <input type="checkbox" class="form-check-input" id="materialUnchecked" [checked]="isEmplyessChecked"
+            (change)="onEmpChange(employee.empId)">
           <label class="form-check-label" for="materialUnchecked"></label>
         </div>
       </td>
