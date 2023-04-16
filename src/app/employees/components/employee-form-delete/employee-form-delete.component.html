@@ -1,6 +1,6 @@
-<a class="btn btn-danger m-2" role="button" (click)="openConfirmationModal([])">
+<button class="btn btn-danger m-2" role="button" (click)="openConfirmationModal([])" >
   <i class="bi bi-x-circle-fill"></i>
-  Delete</a>
+  Delete</button>
 <!-- Confirmation Model -->
 <app-model (dismiss)="onConfirmationCloseHandled()" [display]="displayConfirmationModel" *ngIf="showConfiramtionModel">
   <div class="d-flex flex-row" modal-header>

@@ -16,7 +16,7 @@
   </div>
   <app-input [control]="phoneControl" type="tel" label="Phone"></app-input>
   <!-- [value]="emplyeeDetails?.empPhone" -->
-  <div modal-footer>
+  <div class="d-flex justify-content-end">
     <button type="button" class="btn btn-white" data-dismiss="modal" (click)="onDismissClick()">Cancel</button>
     <button type="submit" class="btn btn-success m-2" [disabled]="empForm.invalid">Save</button>
   </div>

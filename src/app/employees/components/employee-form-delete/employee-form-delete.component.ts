@@ -13,6 +13,7 @@ export class EmployeeFormDeleteComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
   openConfirmationModal(ids: any[]) {
     this.showConfiramtionModel = !this.showConfiramtionModel;
     this.displayConfirmationModel = 'block';

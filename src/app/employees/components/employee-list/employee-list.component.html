@@ -91,9 +91,9 @@
 <!-- Edit Modal -->
 <app-model (dismiss)="onCloseHandled()" [display]="display" *ngIf="showModel">
 
-  <div modal-header>
-    <h5 class="modal-title">Edit Employee</h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseHandled()">
+  <div class="d-flex " modal-header>
+    <h5 class="modal-title ">Edit Employee</h5>
+    <button type="button" class="close " data-dismiss="modal" (click)="onCloseHandled()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -108,7 +108,7 @@
 <app-model (dismiss)="onConfirmationCloseHandled()" [display]="displayConfirmationModel" *ngIf="showConfiramtionModel">
   <div class="d-flex flex-row" modal-header>
     <h5 class="modal-title">Delete Employee</h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onConfirmationCloseHandled()">
+    <button type="button" class="close" data-dismiss="modal" (click)="onConfirmationCloseHandled()">
       X
     </button>
   </div>
