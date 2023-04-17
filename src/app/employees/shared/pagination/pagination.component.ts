@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { EmpolyeesService } from '../../services/employees.service';
 
 @Component({
   selector: 'app-pagination',
@@ -7,22 +8,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
   @Input() currentPage: number = 1;
-  @Input() totalPages: number = 3;
+  totalPages: number = 0;
+  totalItems: number = 0;
   @Output() goTo: EventEmitter<number> = new EventEmitter<number>();
   @Output() next: EventEmitter<number> = new EventEmitter<number>();
   @Output() previous: EventEmitter<number> = new EventEmitter<number>();
 
   pages: number[];
-  constructor() {
-    // this.pages = Array.from(Array(this.totalPages).keys());
-    this.pages = [
-      this.currentPage - 2,
-      this.currentPage - 1,
-      this.currentPage,
-      this.currentPage + 1,
-      this.currentPage + 2,
-      this.currentPage + 3,
-    ].filter((pageNumber) => pageNumber >= 1 && pageNumber <= this.totalPages);
+  constructor(private empSer: EmpolyeesService) {
+    this.empSer.getEmployees$.subscribe((res) => {
+      this.totalPages = Math.ceil(res.length / 10);
+      this.totalItems = res.length;
+      this.pages = Array.from(Array(this.totalPages).keys()).filter(
+        (pageNumber) => pageNumber >= 1 && pageNumber <= this.totalPages
+      );
+    });
   }
 
   ngOnInit() {}

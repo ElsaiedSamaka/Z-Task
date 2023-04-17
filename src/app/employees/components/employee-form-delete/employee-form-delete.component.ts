@@ -10,6 +10,7 @@ export class EmployeeFormDeleteComponent implements OnInit {
   displayConfirmationModel = 'none';
   empIds;
   @Input() isEmplyessChecked: boolean;
+  @Input() isEmployeeChecked: boolean;
   constructor() {}
 
   ngOnInit() {}

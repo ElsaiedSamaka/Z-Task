@@ -1,6 +1,7 @@
-<button class="btn btn-danger m-2" role="button" (click)="openConfirmationModal([])" [disabled]="!isEmplyessChecked">
+<button class="btn btn-danger m-1 px-4 py-3" role="button" (click)="openConfirmationModal([])"
+  [disabled]="!isEmplyessChecked" [disabled]="!isEmployeeChecked">
   <i class="bi bi-x-circle-fill"></i>
-  Delete</button>
+  Delete All </button>
 <!-- Confirmation Model -->
 <app-model (dismiss)="onConfirmationCloseHandled()" [display]="displayConfirmationModel" *ngIf="showConfiramtionModel">
   <div class="d-flex flex-row" modal-header>

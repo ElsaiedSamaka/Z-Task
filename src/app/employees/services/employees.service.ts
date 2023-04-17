@@ -33,4 +33,9 @@ export class EmpolyeesService {
   editEmployee(emp: Employee) {
     return this.http.post(`${this.Employee_API}/editEmployee`, emp);
   }
+  searchEmployee(searchTerm: string) {
+    return this.http.get(
+      `${this.Employee_API}/searchEmployee/${searchTerm}`
+    );
+  }
 }
