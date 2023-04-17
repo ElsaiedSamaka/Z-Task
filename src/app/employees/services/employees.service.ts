@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Employee } from '../models/employee.model';
-import { environment } from './../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class EmpolyeesService {
   employes$ = new BehaviorSubject<any>([]);
   getEmployees$ = this.employes$.asObservable();
 
-  Employee_API = environment.apiUrl + 'Employees';
+  // Employee_API = environment.apiUrl + 'Employees';
+  Employee_API = 'http://task.soft-zone.net/api/Employees';
   constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<Employee[]> {
