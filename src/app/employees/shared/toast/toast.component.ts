@@ -15,7 +15,7 @@ import {
 export class ToastComponent implements OnInit {
   @Input() display = 'none';
   @Input() toastMessage = '';
-  @Input() toastType = '';
+  @Input() toastType = 'success';
   @Input() toastTitle = '';
   @Output() dismiss = new EventEmitter<void>();
   constructor(private el: ElementRef) {}

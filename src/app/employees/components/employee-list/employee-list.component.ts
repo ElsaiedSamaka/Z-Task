@@ -1,11 +1,4 @@
-import {
-  Component,
-  DoCheck,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Employee } from '../../models/employee.model';
 import { EmpolyeesService } from '../../services/employees.service';
@@ -30,6 +23,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   selectedItemsList = [];
   loading$;
   displayToast = 'none';
+  toastType = '';
+  toastMessage = '';
   emplyees!: Employee[];
   emplyeesToDisplay: Employee[] = [];
   currentPage = 1;
@@ -49,7 +44,6 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
       this.emplyees = res;
     });
   }
-  
 
   public onGoTo(page: number): void {
     this.currentPage = page;
@@ -95,6 +89,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
         this.getEmplyees();
       },
       error: (err) => {
+        this.onToastErrOpenHandled();
         console.log(err);
       },
       complete: () => {
@@ -141,7 +136,14 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.displayToast = 'none';
   }
   onToastOpenHandled() {
+    this.toastType = 'success';
     this.displayToast = 'block';
+    this.toastMessage = 'Employee Deleted Successfully';
+  }
+  onToastErrOpenHandled() {
+    this.toastType = 'error';
+    this.displayToast = 'block';
+    this.toastMessage = 'Error Deleting Employee';
   }
   onConfirmationCloseHandled() {
     this.showConfiramtionModel = false;

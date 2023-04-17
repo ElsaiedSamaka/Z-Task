@@ -123,6 +123,6 @@
 </app-model>
 <!-- Confirmation Model -->
 <!-- Toast Component -->
-<app-toast [toastTitle]="'Alert'" [toastMessage]="'Employee deleted success'" [display]="displayToast"
-  (dismiss)="onToastCloseHandled()"></app-toast>
+<app-toast [toastTitle]="'Alert'" [toastMessage]="toastMessage" [display]="displayToast"
+  (dismiss)="onToastCloseHandled()" [toastType]="toastType"></app-toast>
 <!-- Toast Component -->
