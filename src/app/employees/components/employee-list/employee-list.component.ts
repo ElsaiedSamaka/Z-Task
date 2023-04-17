@@ -28,7 +28,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
   emplyees!: Employee[];
   emplyeesToDisplay: Employee[] = [];
   currentPage = 1;
-  totalPages = 1;
+  totalPages: number = 0;
   perPage = 10;
   constructor(private empSer: EmpolyeesService, private uiSer: uiService) {
     this.getEmplyees();
