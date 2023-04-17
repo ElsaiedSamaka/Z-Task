@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { Employee } from '../models/employee.model';
 
 @Injectable({ providedIn: 'root' })
@@ -8,8 +9,7 @@ export class EmpolyeesService {
   employes$ = new BehaviorSubject<any>([]);
   getEmployees$ = this.employes$.asObservable();
 
-  // Employee_API = environment.apiUrl + 'Employees';
-  Employee_API = 'https://exquisite-nasturtium-21804b.netlify.app';
+  Employee_API = environment.apiUrl + 'Employees';
   constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<Employee[]> {

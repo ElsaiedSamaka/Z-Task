@@ -1,1 +1,0 @@
-/api/* http://task.soft-zone.net/api/:splat 200!
