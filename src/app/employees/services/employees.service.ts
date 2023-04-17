@@ -9,7 +9,7 @@ export class EmpolyeesService {
   getEmployees$ = this.employes$.asObservable();
 
   // Employee_API = environment.apiUrl + 'Employees';
-  Employee_API = 'https://serene-phoenix-43b905.netlify.app/softzone/';
+  Employee_API = 'https://exquisite-nasturtium-21804b.netlify.app/';
   constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<Employee[]> {
