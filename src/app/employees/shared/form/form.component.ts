@@ -130,28 +130,31 @@ export class FormComponent implements OnInit, DoCheck {
         .pipe(takeUntil(this.sub$))
         .subscribe({
           next: (response) => {
+            this.dismiss.emit();
             console.log(response);
           },
           error: (err) => {
+            this.dismiss.emit();
             console.log(err);
           },
           complete: () => {
+            this.getEmployees();
             console.log('complete');
           },
         });
     } else {
       this.empSer.addEmployee(employee).subscribe({
         next: (response) => {
-          this.addNewEmp.emit(employee);
+          // this.addNewEmp.emit(employee);
+          this.dismiss.emit();
         },
         error: (err) => {
+          this.dismiss.emit();
           console.log(err);
         },
         complete: () => {
           console.log('complete');
-          this.empForm.reset();
-          this.dismiss.emit();
-          window.location.reload();
+          this.getEmployees();
         },
       });
     }
@@ -161,6 +164,11 @@ export class FormComponent implements OnInit, DoCheck {
     this.empSer.getEmployee(id).subscribe((res) => {
       this.emplyeeDetails = res;
       // console.log(this.emplyeeDetails);
+    });
+  }
+  getEmployees() {
+    this.empSer.getEmployees().subscribe((res) => {
+      console.log(res);
     });
   }
 

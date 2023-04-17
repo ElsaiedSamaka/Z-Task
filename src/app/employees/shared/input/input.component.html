@@ -1,6 +1,6 @@
 <div class="form-group  has-validation" [ngClass]="control.invalid && showErrors() ? 'error' : ''">
   <label class="col-form-label">{{label}}</label>
-  <input [formControl]="control" [placeholder]="placeholder" [type]="type" class="form-control" />
+  <input [formControl]="control" [placeholder]="placeholder" [type]="type" [value]="value" class="form-control" />
 
   <div *ngIf="showErrors()" class="invalid-feedback" style="display: block;">
     <div *ngIf="control.errors['required']">
