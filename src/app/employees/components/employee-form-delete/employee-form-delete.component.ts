@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-employee-form-delete',
@@ -9,7 +9,7 @@ export class EmployeeFormDeleteComponent implements OnInit {
   showConfiramtionModel = false;
   displayConfirmationModel = 'none';
   empIds;
-
+  @Input() isEmplyessChecked: boolean;
   constructor() {}
 
   ngOnInit() {}

@@ -1,4 +1,4 @@
-<button class="btn btn-danger m-2" role="button" (click)="openConfirmationModal([])" >
+<button class="btn btn-danger m-2" role="button" (click)="openConfirmationModal([])" [disabled]="!isEmplyessChecked">
   <i class="bi bi-x-circle-fill"></i>
   Delete</button>
 <!-- Confirmation Model -->
