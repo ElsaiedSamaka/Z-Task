@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./sort.component.css'],
 })
 export class SortComponent implements OnInit {
-  @Input('') isDesc = true;
+  @Input() isDesc = true;
   @Output() sortTypeChange = new EventEmitter<boolean>();
   constructor() {}
 

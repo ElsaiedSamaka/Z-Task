@@ -1,4 +1,11 @@
-import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Employee } from '../../models/employee.model';
 import { EmpolyeesService } from '../../services/employees.service';
@@ -32,15 +39,17 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     this.getEmplyees();
     this.loading$ = this.uiSer.loading$;
   }
+
   ngDoCheck(): void {
     this.emplyessIds = this.emplyeesToDisplay.map((emp) => emp.empId);
-    // console.log(this.selectedItemsList);
   }
+
   ngOnInit(): void {
     this.empSer.getEmployees$.subscribe((res) => {
       this.emplyees = res;
     });
   }
+  
 
   public onGoTo(page: number): void {
     this.currentPage = page;
