@@ -349,6 +349,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy, DoCheck {
     } else {
       this.isEmployeeChecked = false;
     }
+    console.log(this.isEmployeeChecked);
   }
   searchEmployee() {
     this.searchForm.controls.searchControl.valueChanges
