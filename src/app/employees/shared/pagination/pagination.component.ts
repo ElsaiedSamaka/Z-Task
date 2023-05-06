@@ -40,21 +40,16 @@ export class PaginationComponent implements OnInit {
   }
   getPages(current: number, total: number): number[] {
     if (total <= 7) {
-      console.log('total <= 7');
       return Array.from(Array(total).keys()).map((x) => ++x);
     }
 
     if (current > 5) {
-      console.log('current > 5');
       if (current >= total - 4) {
-        console.log('current >= total - 4');
         return [1, -1, total - 4, total - 3, total - 2, total - 1, total];
       } else {
-        console.log('current < total - 4');
         return [1, -1, current - 1, current, current + 1, -1, total];
       }
     }
-    console.log('current < 5');
     return [1, 2, 3, 4, 5, -1, total];
   }
 }
