@@ -1,15 +1,21 @@
 <section class="d-flex justify-content-between align-items-center">
-  <div>showing page <strong>{{(totalPages==0? '0': currentPage)}}</strong> of total <strong> {{totalPages}} </strong>pages
+  <div>showing page <strong>{{(totalPages==0? '0': currentPage)}}</strong> of total <strong> {{totalPages}}
+    </strong>pages
   </div>
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item" [ngClass]="{'disabled': (currentPage <= 1)}"><a class="page-link" (click)="onPrevious()"
-        role="link">Previous</a></li>
-    <li class="page-item " [ngClass]="page === currentPage? 'active' : ''" *ngFor="let page of pages;  index as i ">
-      <a class="page-link" (click)="onGoTo(page)" (keyup.enter)="onGoTo(page)">{{page}}</a>
-    </li>
-    <li class="page-item" [ngClass]="{'disabled': (currentPage === totalPages )}"><a class="page-link" (click)="onNext()"
-        role="link">Next</a></li>
-  </ul>
-</nav>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      <li class="page-item" [ngClass]="{'disabled': (currentPage <= 1)}"><a class="page-link" (click)="onPrevious()"
+          role="link">Previous</a></li>
+      <ng-container *ngFor="let page of pages; index as i">
+        <li *ngIf="page !== -1; else more" class="page-item " [ngClass]="page === currentPage? 'active' : ''">
+          <a class="page-link" (click)="onGoTo(page)" (keyup.enter)="onGoTo(page)">{{page}}</a>
+        </li>
+        <ng-template #more>
+          <li class="page-item "><a class="page-link">...</a></li>
+        </ng-template>
+        </ng-container>
+        <li class="page-item" [ngClass]="{'disabled': (currentPage === totalPages )}"><a class="page-link" (click)="onNext()"
+            role="link">Next</a></li>
+        </ul>
+        </nav>
 </section>
